@@ -1,0 +1,162 @@
+/* GLOBAL VARIABLES*/
+@colorblack: #000000;
+@colorwhite: #ffffff;
+@colortxt1: #212121;
+@colortxt2: #757575;
+@brndcolor: #0082ed;
+@colorbordern: #e0e0e0;
+
+/* @bg_spritemkt: url("//cdn.vmartretail.com/images/vmart_msprite.png") no-repeat; */
+/* FINAL VARIABLES LIST */
+@white: #fff;
+@black: #000;
+@colorP1: #00b36b;
+@colorP2: #0082ed;
+@colorP3: #faaf00;
+@colorP4: #ff4e33;
+@buttonBG: #d00439;
+@grey: #212121;
+@grey1: #757575;
+@grey2: #bdbdbd;
+@grey3: #e0e0e0;
+@grey4: #eeeeee;
+@grey5: #f6f6f6;
+@brnd: #ff3d55;
+@orange: #ff8d31;
+
+/* MIXINS VARIABLES LIST */
+@Error: @colorP4;
+@Warning: @colorP3;
+@Info: @colorP2;
+@InfoS: @grey1;
+@Success: @colorP1;
+@BrandColor: @brnd;
+@Link: @colorP2;
+@Link1: @brnd;
+@Divider: @grey4;
+@FontColorP: @grey;
+@FontColorS: @grey1;
+@border: @grey3;
+@listype(@list-style: none) {
+  list-style: @list-style;
+}
+/* MIXINS */
+.appearance(@appearance) {
+  -webkit-appearance: @appearance;
+  -ms-appearance: @appearance;
+  -moz-appearance: @appearance;
+  -o-appearance: @appearance;
+  appearance: @appearance;
+}
+.uselect(@uselect) {
+  -webkit-user-select: @uselect;
+  -moz-user-select: @uselect;
+  -ms-user-select: @uselect;
+  user-select: @uselect;
+}
+.border-radius (@radius: 3px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.transform(@transform) {
+  -webkit-transform: @transform;
+  -moz-transform: @transform;
+  -o-transform: @transform;
+  -ms-transform: @transform;
+  transform: @transform;
+}
+.rotate (@deg) {
+  -webkit-transform: rotate(@deg);
+  -moz-transform: rotate(@deg);
+  -ms-transform: rotate(@deg);
+  -o-transform: rotate(@deg);
+}
+.transition (@transition: all .3s ease-in-out) {
+  -webkit-transition: @transition;
+  -moz-transition: @transition;
+  -ms-transition: @transition;
+  -o-transition: @transition;
+}
+.box-shadow(@shadow) {
+  -webkit-box-shadow: @shadow;
+  -moz-box-shadow: @shadow;
+  box-shadow: @shadow;
+}
+.box-sizing(@sizing) {
+  -webkit-box-sizing: @sizing;
+  -moz-box-sizing: @sizing;
+  box-sizing: @sizing;
+}
+.placeholder(@rules) {
+  &::-webkit-input-placeholder {
+    @rules();
+  }
+  &:-moz-placeholder {
+    @rules();
+  }
+  &::-moz-placeholder {
+    @rules();
+  }
+  &:-ms-input-placeholder {
+    @rules();
+  }
+}
+/* New Rewamp */
+.animated {
+  animation-duration: 1.5s;
+  animation-fill-mode: both;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.bx_animate {
+  animation-name: fadeIn;
+}
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+.pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+}
+.btn_gradient {
+  background-image: -moz-linear-gradient(0deg, rgb(255, 147, 75) 0%, rgb(255, 94, 98) 100%);
+  background-image: -webkit-linear-gradient(0deg, rgb(255, 147, 75) 0%, rgb(255, 94, 98) 100%);
+  background-image: -ms-linear-gradient(0deg, rgb(255, 147, 75) 0%, rgb(255, 94, 98) 100%);
+}
+
+.success{
+  background-color: @Success;
+}
+.break{
+  background-color: @Warning;
+}
+.oncall{
+  background-color: @Error;
+}
+.traning{
+  background-color: @Info;
+}
+.feedback{
+  background-color: @BrandColor;
+}
