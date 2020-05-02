@@ -1,0 +1,502 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('variables.less');
+@import url('reset.less');
+@import url('checkbox.less');
+@import url('popup.less');
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: @FontColorP;
+  background: #f1f1f1;
+}
+.wrapper{
+	max-width: 1136px;
+	margin: 0 auto;
+	padding: 0 10px;
+}
+
+// Common less
+.heading{
+	text-align: center;
+	span{
+		font-size: 48px;
+		color: @white;
+		display: block;
+		margin-bottom: 30px;
+		font-family: 'Lobster';
+		text-align: center;
+		position: relative;
+	}
+	p{
+		display: inline-block;
+		position: relative;
+		text-align: center;
+		width: 80px;
+		margin: 0;
+		&:after{
+			content: '';
+			width: 200px;
+			height: 2px;
+			background-color: @white;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			right: 100px;
+		}
+		&:before{
+			content: '';
+			width: 200px;
+			height: 2px;
+			background-color: @white;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			left: 100px;
+		}
+		i{
+			display: inline-block;
+			font-size: 18px;
+			color: @white;
+			margin: 0 3px;
+			position: relative;
+    		top: 2px;
+		}
+	}
+}
+.btn {
+    text-align: center;
+    font-size: 16px;
+    font-weight: normal;
+    border: none;
+    outline: none;
+    padding: 9px;
+    display: block;
+    .border-radius(4px);
+}
+.clr_fill{
+	background-color: @BrandColor;
+	color: @white;
+}
+
+.popup_box{
+	.login_data{
+		.title{
+			margin: 0 0 25px 0;
+    		text-align: center;
+    		h3{
+    			color: @FontColorP;
+			    font-size: 24px;
+			    font-weight: 500;
+			    margin-bottom: 4px;
+    		}
+    		P{
+    			font-size: 14px;
+			    color: @FontColorP;
+			    margin: 0;
+			    font-weight: normal;
+			    a {
+				    font-weight: 700;
+				    color: @BrandColor;
+				    text-decoration: none;
+				}
+    		}
+		}
+	}
+}
+.secondary_title {
+    margin: 33px 0px 13px 0px;
+    padding: 0;
+    font-size: 14px;
+    font-weight: normal;
+    color: @FontColorS;
+    position: relative;
+    text-align: center;
+    height: 19px;
+    span {
+	    display: inline-block;
+	    font-weight: 400;
+	    background: @white;
+	    padding: 0 16px;
+	    position: relative;
+	    z-index: 1;
+	}
+	&:after {
+	    content: '';
+	    position: absolute;
+	    top: 0;
+	    bottom: 0;
+	    height: 1px;
+	    width: 100%;
+	    background: @border;
+	    margin: auto;
+	    left: 0;
+	}
+}
+/*form section*/
+.default_form {
+    clear: both;
+    .s_row {
+        position: relative;
+        padding: 0;
+        margin-bottom: 16px;
+        .border-radius(4px);
+        input {
+            //border-bottom: 1px solid @border;
+            border: 1px solid @border;
+            width: 100%;
+            font-size: 14px;
+            padding: 25px 16px 8px 16px;
+            border-radius: 0;
+            -webkit-appearance: none;
+            color: @FontColorP;
+            background: transparent;
+            .border-radius(4px);
+            &:focus {
+                outline: none;
+            }
+        }
+        &.error{
+            input.label_jump{
+                border-color: @BrandColor;
+            }
+            label{
+                color: @BrandColor;
+            }
+        }
+        .error {
+            border-bottom: 1px solid @Error;
+        }
+        > label {
+            color: @FontColorP;
+            position: absolute;
+            pointer-events: none;
+            left: 0;
+            top: 16px;
+            display: inline-block;
+            width: 100%;
+            text-indent: 16px;
+            .transition(all 0.35s cubic-bezier(0.4, 0, 0.2, 1));
+        }
+        input:focus ~ label, .label-valid{
+          top: 8px;
+          left: 0;
+          font-size: 12px;
+          color: @FontColorS;
+        }
+        &.otp_fields{
+            border: none;
+            text-align: center;
+            input{
+                display: inline-block;
+                width: 48px;
+                border: none;
+                border-bottom: @border solid 1px;
+                margin: 0px 5px;
+                padding: 10px 0px;
+                font-size: 24px;
+                color: @FontColorP;
+                font-weight: 500;
+                text-align: center;
+                .border-radius(0px);
+            }
+        }
+    }
+    .forgot_pass{
+        display: inline-block;
+        width: 100%;
+        a{
+            float: right;
+            text-decoration: none;
+            color: @Info;
+            font-size: 14px;
+            font-weight: 700;
+            position: relative;
+            text-transform: uppercase;
+            &:hover{
+                text-decoration: underline;
+            }   
+        }
+    }
+    fieldset {
+        border: 0;
+    }
+}
+.login_data{
+	&.form_section {
+	    margin: 0 !important;
+	    min-width: 500px;
+	    border: none;
+	    padding: 26px 62px 26px 62px;
+	    .forgot_password{
+	    	display: block;
+	    	text-align: right;
+	    	margin: 10px 0;
+	    	a{
+	    		font-weight: 700;
+	    		color: @BrandColor;
+	    	}
+	    	span{
+	    		font-size: 12px;
+	    		float: left;
+	    	}
+	    }
+	}
+}
+.form_section {
+    padding: 50px 85px;
+    min-width: 300px;
+    max-width: 562px;
+    position: relative;
+    height: auto;
+    border: 1px solid #e0e0e0;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+}
+.video_sc{
+	padding: 40px;
+}
+.video_iframe{
+	border: none;
+	.border-radius(5px);
+}
+
+// Common less ends
+
+.top_head{
+	background: @BrandColor;
+	height: 40px;
+	overflow: hidden;
+	position: relative;
+	color: @white;
+	font-size: 14px;
+	span{
+		margin-right: 60px;
+		line-height: 40px;
+	}
+	.eocjs-newsticker{
+		.eocjs-newsticker-container{
+			position: relative;
+  			height: 40px;
+  			.eocjs-newsticker-one, .eocjs-newsticker-two{
+  				position: absolute;
+				left: 0;
+				top: 0;
+				height: 20px;
+				line-height: 20px;
+				white-space: nowrap;
+  			}
+		}
+	}
+}
+
+header{
+	background: rgba(0, 0, 0, 0.4);
+	padding: 10px 0;
+	position: absolute;
+	top: 40px;
+	left: 0;
+	width: 100%;
+	z-index: 1;
+	span.logo{
+		display: inline-block;
+	}
+	nav{
+		float: right;
+		margin-top: 10px;
+		a.mob_menu {
+			display: none;
+		    padding: 10px 15px;
+		    color: #fff;
+		    font-size: 20px;
+		    margin-top: 1px;
+		}
+		ul{
+			margin: 0;
+			padding: 0;
+			a.close{
+				display: none;
+			}
+			li{
+				display: inline-block;
+				margin-left: 20px;
+				a{
+					display: inline-block;
+					color: @white;
+					text-decoration: none;
+					padding: 10px 15px;
+					border: 1px solid rgba(255, 255, 255, 0.7);
+					font-size: 14px;
+					font-weight: 500;
+					.border-radius(4px);
+					.transition();
+					i{
+						margin-right: 5px;
+					}
+					&:hover{
+						background: @BrandColor;
+						color: @white;
+						text-decoration: none;
+						border-color: @BrandColor;
+					}
+				}
+			}
+		}
+	}
+	&.head_variations{
+		position: relative;
+		top: 0;
+		background-color: #b22c3c;
+	}
+}
+
+.adversiser{
+	background-color: @BrandColor;
+	padding: 15px 0;
+	text-align: right;
+	span{
+		font-size: 16px;
+		font-weight: 700;
+		margin-right: 20px;
+		color: @white;
+		float: left;
+		line-height: 40px;
+	}
+	a{
+		display: inline-block;
+		color: @white;
+		text-decoration: none;
+		padding: 10px 15px;
+		border: 1px solid rgba(255, 255, 255, 0.7);
+		font-size: 14px;
+		font-weight: 500;
+		.border-radius(4px);
+		.transition();
+		margin-right: 10px;
+		&:hover{
+			background: @white;
+			color: @BrandColor;
+			text-decoration: none;
+			border-color: @white;
+		}
+	}
+}
+
+footer{
+	padding: 50px 0 20px 0;
+	background-color: #0b3357;
+	.footer{
+		display: flex;
+		justify-content: space-between;
+		.callouts{
+			width: 100%;
+			ul{
+				margin: 0;
+				padding: 0;
+				span{
+					font-size: 18px;
+					font-weight: 500;
+					display: block;
+					position: relative;
+					color: @white;
+					margin-bottom: 15px;
+					&:after{
+						content: '';
+						display: inline-block;
+						height: 2px;
+						width: 50px;
+						position: relative;
+						top: -4px;
+						margin-left: 10px;
+						background-color: @white;
+					}
+				}
+				li{
+					list-style: none;
+					a{
+						text-decoration: none;
+						display: block;
+						font-size: 14px;
+						color: @white;
+						padding: 5px 0 5px 20px;
+						.transition();
+						position: relative;
+						&:hover{
+							color: @BrandColor;
+							&:after{
+								border-color: @BrandColor;
+								left: 3px;
+							}
+						}
+						&:after{
+					    	content: '';
+					    	position: absolute;
+					    	top: 2px;
+					    	bottom: 0;
+					    	left: 0px;
+					    	margin: auto;
+					    	width: 8px;
+					    	height: 8px;
+					    	border-right: 2px solid @white;
+					    	border-top: 2px solid @white;
+					    	.rotate(45deg);
+					    	.transition();
+					    }
+					}
+				}
+			}
+		}
+	}
+	.sub_footer{
+		margin-top: 40px;
+		padding-top: 30px;
+		border-top: 1px solid #394b5b;
+		text-align: right;
+		span{
+			float: left;
+			color: #ccc;
+			font-size: 12px;
+		}
+		ul{
+			display: inline-block;
+			text-align: right;
+			li{
+				display: inline-block;
+				list-style: none;
+				margin: 0 5px;
+				a{
+					text-decoration: none;
+					display: inline-block;
+					width: 40px;
+					height: 40px;
+					.border-radius(40px);
+					background-color: rgba(0, 0, 0, 0.5);
+					line-height: 40px;
+					text-align: center;
+					i{
+						color: @white;
+					}
+				}
+			}
+			p{
+				color: #ccc;
+				font-size: 12px;
+				margin: 5px 0 0 0;
+			}
+		}
+	}
+}
+
+.jumbo_card{
+	background-color: @white;
+	padding: 50px;
+	.border-radius(5px);
+	.box-shadow(0 0 5px rgba(0, 0, 0, 0.1));
+	margin-bottom: 30px;
+}

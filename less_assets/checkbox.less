@@ -11,7 +11,7 @@
         position: relative;
         padding-left: 25px;
         cursor: pointer;
-        color: @colortxt2;
+        color: @FontColorS;
     }
     &:disabled + label{
         cursor: default!important;
@@ -31,17 +31,17 @@
         position: absolute;
         left: 0;
         top: 0;
-        width: 14px;
-        height: 14px;
+        width: 16px;
+        height: 16px;
         border: 1px solid #b1b1b1;
-        background: @colorwhite;
+        background: @white;
         .border-radius(1px);
         /* box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3); */
     }
     &:disabled:not(:checked) + label:before,
     &:disabled:checked + label:before {
         border-color: #bbbbbb;
-        background-color: @colorwhite;
+        background-color: @white;
     }
     &:checked:focus + label:before,
     &:not(:checked):focus + label:before {
@@ -62,11 +62,11 @@
         .rotate(40deg);
     }
     &:checked + label{
-        color: @colortxt2!important;
+        color: @FontColorS!important;
     }
     &:checked + label:before{
-        border: 1px solid @brndcolor!important;
-        background: @brndcolor;
+        border: 1px solid @BrandColor!important;
+        background: @BrandColor;
     }
     &:checked + label:after {
         content: '';
@@ -76,10 +76,10 @@
         opacity: 1;
         .transition();
         .transform(scale(1));
-        width: 4px;
-        height: 9px;
-        border-bottom: 2px solid @colorwhite;
-        border-right: 2px solid @colorwhite;
+        width: 6px;
+        height: 11px;
+        border-bottom: 2px solid @white;
+        border-right: 2px solid @white;
         .rotate(40deg);
     }
     &:disabled:checked + label:after {
@@ -91,7 +91,7 @@
 }
 
 [type="checkbox"] + label:hover:before {
-    border: 1px solid @brndcolor !important;
+    border: 1px solid @BrandColor !important;
 }
 
 
@@ -102,11 +102,11 @@
         display: inline-block;
         position: relative;
         padding: 3px 0 5px 30px;
-        color: @colortxt2;
+        color: @FontColorS;
         font-size: 14px;
         font-weight: normal;
         &::before {
-            background-color: @colorwhite;
+            background-color: @white;
             border: 2px solid #a8a8a8;
             .border-radius(50px);
             display: inline-block;
@@ -119,8 +119,8 @@
             position: absolute;
         }
         &::after {
-            background-color: @brndcolor;
-            border: @colorwhite solid 2px;
+            background-color: @BrandColor;
+            border: @white solid 2px;
             background-image: none;
             border-radius: 50px;
             content: "";
@@ -134,12 +134,12 @@
         }
     }
     &:checked + label:before {
-        background-color: @colorwhite;
-        border: @brndcolor solid 2px;
+        background-color: @white;
+        border: @BrandColor solid 2px;
     }
     &:checked + label:after {
-        background-color: @brndcolor;
-        border: @colorwhite solid 2px;
+        background-color: @BrandColor;
+        border: @white solid 2px;
         background-image: none;
         .border-radius(50px);
         content: "";
@@ -162,7 +162,7 @@
 /*SELECTBOX*/
 select{
     border: none;
-    color: @colortxt2;
+    color: @FontColorS;
     font-size: 14px;
     font-weight: 400;
     border-bottom: #d8d8d8 solid 1px;
@@ -177,19 +177,19 @@ select{
         position: relative;
         input {
             border: none;
-            border-bottom: 1px solid @colorbordern;
+            border-bottom: 1px solid @border;
             width: 100%;
             font-size: 14px;
             padding: 6px 0px;
             border-radius: 0;
             -webkit-appearance: none;
-            color: @colortxt2;
+            color: @FontColorS;
             &:focus {
                 outline: none;
             }
         }
         > label {
-                color: @colortxt2;
+                color: @FontColorS;
                 font-weight: normal;
                 position: absolute;
                 pointer-events: none;
@@ -211,7 +211,7 @@ select{
                 width: 0%;
                 height: 1px;
                 z-index: 9;
-                background: @brndcolor;
+                background: @BrandColor;
                 .transition(all 0.35s cubic-bezier(0.4, 0, 0.2, 1));
             }
             &:after {
@@ -223,7 +223,7 @@ select{
                 width: 0%;
                 height: 1px;
                 z-index: 9;
-                background: @brndcolor;
+                background: @BrandColor;
                 .transition(all 0.35s cubic-bezier(0.4, 0, 0.2, 1));
             }
         }
