@@ -114,7 +114,7 @@
 				<i class="fas fa-heart"></i>
 			</p>
 		</div>
-		<div class="form_section">
+		<div class="form_section_srch">
 			<div class="form_group">
 				<p>I am looking for</p>
 				<select>
