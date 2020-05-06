@@ -519,3 +519,70 @@ footer{
 	.box-shadow(0 0 5px rgba(0, 0, 0, 0.1));
 	margin-bottom: 30px;
 }
+
+// Messages 
+.form_messages{
+	height: 40px;
+	line-height: 40px;
+	text-indent: 48px;
+	color: @FontColorP;
+	position: relative;
+	.border-radius(4px);
+	position: fixed;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+    max-width: 50%;
+    margin: auto;
+    .transition();
+    z-index: 9;
+    &.active{
+    	bottom: 20px;
+    }
+	&:before{
+		content: '';
+		position: absolute;
+		top: 10px;
+		left: 16px;
+		width: 20px;
+		height: 20px;
+	}
+	&.success{
+		background: #CCF0E1;
+		&:before{
+			background: url('../images/success-grn.svg');
+		}
+	}
+
+	&.warning{
+		background: #FFE6D0;
+		&:before{
+			background: url('../images/warning.svg');
+			background-size: 100%;
+		}
+	}
+
+	&.error{
+		background: #FFDCD6;
+		&:before{
+			background: url('../images/error.svg');
+		}
+	}
+	a.del{
+		position: absolute;
+		top: 11px;
+		right: 35px;
+		width: 17px;
+		height: 18px;
+		background: url('../images/trash.svg');
+	}
+	i{
+		position: absolute;
+	    top: 13px;
+	    right: 10px;
+	    width: 12px;
+	    height: 12px;
+	    cursor: pointer;
+	    background: url('../images/x-4.svg');
+	}
+}
