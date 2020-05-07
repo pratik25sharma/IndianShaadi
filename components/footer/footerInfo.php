@@ -24,6 +24,7 @@
                     <span>Information</span>
                     <li><a href="javascrip:void(0);">Disclaimers</a></li>
                     <li><a href="javascrip:void(0);">report misuse</a></li>
+                    <li><a href="javascrip:void(0);">Write blog</a></li>
                     <li><a href="javascrip:void(0);">Blog</a></li>
                     <li><a href="javascrip:void(0);"> Advertise With Us</a></li>
                 </ul>
