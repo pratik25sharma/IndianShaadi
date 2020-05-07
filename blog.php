@@ -1,5 +1,5 @@
 <?php
-	include_once('./admin/connection/con.php');
+	include_once('./admin/connection/connection.php');
     require "lessphp/lessc.inc.php";
     $less = new lessc;
     $less->setFormatter("compressed");

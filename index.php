@@ -3,7 +3,7 @@
     $less = new lessc;
     $less->setFormatter("compressed");
 	$less->checkedCompile("less_assets/home.less", "css/home.css");
-	include_once('./admin/connection/con.php');
+	include_once('./admin/connection/connection.php');
     //$less->checkedCompile("less_assets/desktop/slick.less", "css/desktop_css/slick.css");
 ?>
 

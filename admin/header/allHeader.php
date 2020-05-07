@@ -2,7 +2,7 @@
     // include panel
     include_once('../panels/leftPanel.php');
     include_once('../panels/rightPanel.php');
-    include_once('../connection/con.php');
+    include_once('../connection/connection.php');
     include_once('../header/header.php'); 
     
     echo '<body>';
