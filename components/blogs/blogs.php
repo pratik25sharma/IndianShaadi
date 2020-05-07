@@ -10,13 +10,17 @@
 
 <section class="blogs">
 	<div class="wrapper">
+        <span class="bttns">
+            <button class="next arrow" type="button"></button>
+            <button class="prev arrow" type="button"></button>
+        </span>
 		<ul>
             <?php
                 while ($blog_data = $result->fetch_assoc()) {
                     echo '<li>
-                        <img src="./images/blogs/'.$blog_data['blog_image'].'" />
+                        <span><img src="./images/blogs/'.$blog_data['blog_image'].'" /></span>
                         <p>'.$blog_data['blog_heading'].'</p>
-                        <span>'.$blog_data['posted_on'].' by <strong>'.$blog_data['posted_by'].'</strong></span>
+                        <i>'.$blog_data['posted_on'].' by <strong>'.$blog_data['posted_by'].'</strong></i>
                     </li>';
                 }
             ?>

@@ -1,5 +1,8 @@
 $(document).ready(function(){
     //$('.banner').css('height', $(window).height() - 40);
+
+    labeljump();
+
     $('.fade').slick({
 		dots: false,
 		infinite: true,
@@ -77,6 +80,81 @@ $(document).ready(function(){
 // });
 
 
+/*INPUT LABEL JUMP*/
+function labeljump(){
+    $(".label_jump").on('keyup change', function(){
+        var bus = $(this).val();
+        if (bus.length > 0) {
+            $(this).siblings("label").addClass("label-valid");
+        } else {
+            $(this).siblings("label").removeClass("label-valid");
+        }
+    });
+}
+
+
+var modal = document.getElementById('myModal');
+
+$(".model_box_child").each(function(){
+     $(this).hide();
+});
+
+$('.open_model').on( "click", function(e) {
+    e.preventDefault();
+    var id = $(this).attr('data-target'); 
+    $("div.model_box_child").each(function(){
+        $(this).hide();
+        if($(this).attr('id') == id) {
+            $(this).show();
+            $('#myModal').show();
+            $('body').addClass('hidden');
+        }
+    });
+});
+
+$('.open_modelb').on( "click", function(e) {
+    e.preventDefault();
+    var id = $(this).attr('data-target'); 
+    $("div.model_box_child").each(function(){
+        $(this).hide();
+        if($(this).attr('id') == id) {
+            $(this).show();
+            $('#myModal').show();
+            $('body').addClass('hidden');
+            $(this).parents('.model_box').addClass('bottom_view');
+        }
+    });
+});
+
+$('.open_modelf').on( "click", function(e) {
+    e.preventDefault();
+    var id = $(this).attr('data-target');
+    $("div.model_box_child").each(function(){
+        $(this).hide();
+        if($(this).attr('id') == id) {
+            $(this).show();
+            $('#myModal').show();
+            $('body').addClass('hidden');
+            $(this).parents('.model_box').addClass('full_view');
+        }
+    });
+});
+
+$('span.close_model, #myModal').on('click', function(){
+  $('#myModal').hide().children('.model_box').removeClass('bottom_view full_view');
+  $('#myModal .model_box_child').hide();
+  $('body').removeAttr('class');
+});
+
+$('.close_model, #myModal').on('click', function(){
+  $('#myModal').hide().children('.model_box').removeClass('bottom_view full_view');
+  $('#myModal .model_box_child').hide();
+  $('body').removeAttr('class');
+});
+
+$('.model_box').on('click', function(e){
+  e.stopPropagation();
+});
 
 
 
