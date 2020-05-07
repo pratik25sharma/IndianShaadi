@@ -1,16 +1,13 @@
 <?php
 
 $allLeftPanels = array(
-    'Components' => array('Button'),
-    'Tables' => array('Basic Table'),
     'Blogs' => array(
-        'View Blogs' => '/index/admin/blogs/view.php'
+        'View Blogs' => '../blogs/view.php'
     ),
     'Header Banner' => array(
-        'Add Banner' => '/index/admin/banner/add.php', 
-        'View Banner' => '/index/admin/banner/view.php'
-    ),
-    'Forms' => array('Basic Form')
+        'Add Banner' => '../banner/add.php', 
+        'View Banner' => '../banner/view.php'
+    )
 );
 
 

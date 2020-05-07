@@ -28,17 +28,20 @@
 	if($_POST){
 
 		// validate the profile data
-		$userData = $_POST['userProfile'];
-		$blogData = $_POST['blog'];
-		$userUploadeFile = $_FILES['blog'];
-		
+		$userData = !empty($_POST['userProfile']) ? $_POST['userProfile'] : array();
+		$blogData = !empty($_POST['blog']) ? $_POST['blog'] : array();
+		$userUploadeFile = !empty($_FILES['blog']) ? $_FILES['blog'] : array();
+		$tnc = !empty($_POST['tnc']) ? $_POST['tnc'] : '';
+
 		// check for validity of username, useremail, number, 
-		if(checkIsValidName($userData['username']) && 
-			checkIsValidEmail($userData['email']) && 
-			checkIsValidName($userData['name']) && 
-			checkIsValidNumber($userData['number']) && 
-			checkIsValidFile($userUploadeFile) && 
-			checkIsValidName($blogData['heading'])
+		if(	checkForTNC($tnc, 'Terms And Conditions') && 
+			checkIsValidName($userData['username'], 'Username') && 
+			checkIsValidEmail($userData['email'], 'Email') && 
+			checkIsValidName($userData['name'], 'Name') && 
+			checkIsValidNumber($userData['number'], 'Number') && 
+			checkIsValidFile($userUploadeFile, 'Image') && 
+			checkIsValidName($blogData['heading'], 'Heading') &&
+			!empty($blogData['body'])
 		){
 			// save user data
 			$blogHeading = $bannerHeader = $blogData['heading'];
@@ -59,20 +62,16 @@
 			$stmt->bind_param("issss", $postedBy, $fileName, $blogHeading, $blogData, $bannerHeader);
 			$stmt->execute();
 
-		} else {
 			// throw the message to user
-			echo '<div class="form_messages error">
-				'.$_SESSION['error']['msg'].'
-				<i></i>
-				<a href="#!" class="del"></a>
-				</div>';
-		} 
+			echo '<div class="form_messages success active" id="removeNotification">Congrats!! Your Blog have been submitted for Approval !
+					<i></i></div>';
 
-		// die('outside');
-		// echo "<pre>";
-		// print_r($_POST);
-		// print_r($_SESSION);
-		// die;
+		} else {
+			
+			// throw the message to user
+			echo '<div class="form_messages error active" id="removeNotification">'.$_SESSION['error']['msg'].' 
+					<i></i></div>';
+		}
 	}
 ?>
 <header class="head_variations">
@@ -99,11 +98,7 @@
 		</nav>
 	</div>
 </header>
-<div class="form_messages error active">
-				<?= $_SESSION['error']['msg'] ?>
-				<i></i>
-				<a href="#!" class="del"></a>
-				</div>
+
 <section class="blogs_admin">
 	<div class="wrapper">
 		<div class="head">
@@ -117,27 +112,27 @@
 			<form class="default_form" action="" method="POST" enctype="multipart/form-data">
 				<fieldset>
 					<div class="s_row">
-	                    <input type="text" class="label_jump" required="required" name="userProfile[name]">
-	                    <label>Enter your Name*</label>
+	                    <input type="text" class="label_jump" required="required" name="userProfile[name]" value="<?php echo ($userData['name'])?? ''; ?>">
+	                    <label <?php echo (!empty($userData['name']))? 'class="label-valid"' : ''; ?> >Enter your Name*</label>
 	                </div>
 					<div class="s_row">
-	                    <input type="email" class="label_jump" required="required"  name="userProfile[email]">
-	                    <label>Enter your Email ID*</label>
+	                    <input type="email" class="label_jump" required="required"  name="userProfile[email]" value="<?php echo ($userData['email'])?? ''; ?>">
+	                    <label <?php echo (!empty($userData['email'])) ? 'class="label-valid"' : ''; ?>>Enter your Email ID*</label>
 	                </div>
 	                <div class="s_row">
-	                    <input type="tel" class="label_jump" required="required"  name="userProfile[number]">
-	                    <label>Enter your Phone number*</label>
+	                    <input type="tel" class="label_jump" required="required"  name="userProfile[number]" value="<?php echo ($userData['number'])?? ''; ?>">
+	                    <label <?php echo (!empty($userData['number']))? 'class="label-valid"' : ''; ?>>Enter your Phone number*</label>
 	                </div>
 	                <div class="secondary_title">
 			            <span>BLOG PROFILE DETAILS</span>
 			        </div>
 			        <div class="s_row">
-	                    <input type="text" class="label_jump" required="required"  name="userProfile[username]">
-	                    <label>Profile Name*</label>
+	                    <input type="text" class="label_jump" required="required"  name="userProfile[username]" value="<?php echo ($userData['username'])?? ''; ?>">
+	                    <label <?php echo (!empty($userData['username']))? 'class="label-valid"' : ''; ?>>Profile Name*</label>
 	                </div>
 	                <div class="s_row">
-	                    <input type="text" class="label_jump" required="required"  name="blog[heading]">
-	                    <label>Blog Heading*</label>
+	                    <input type="text" class="label_jump" required="required"  name="blog[heading]" value="<?php echo ($blogData['heading']) ?? ''; ?>">
+	                    <label <?php echo (!empty($blogData['heading'])) ? 'class="label-valid"' : ''; ?>>Blog Heading*</label>
 	                </div>
 	                <div class="s_row">
 	                    <input type="file" class="label_jump" required="required"  name="blog[image]">
@@ -147,7 +142,9 @@
 			            <span>WRITE YOUR BLOG</span>
 			        </div>
 	                <div class="s_row">
-	                    <textarea name="blog[body]"></textarea>
+	                    <textarea name="blog[body]">
+							<?= ($blogData['body']) ?? ''; ?>
+						</textarea>
 	                </div>
 	                <div class="s_row">
 	                	<span>
@@ -164,72 +161,6 @@
 	</div>
 </section>
 
-<footer>
-	<div class="wrapper">
-		<div class="footer">
-			<div class="callouts">
-				<ul>
-					<span>Need Help</span>
-	                <li><a href="javascrip:void(0);">Contact Us</a></li>
-					<li><a href="javascrip:void(0);"> Need Help</a></li>
-	                <li><a href="javascrip:void(0);">Customer Support</a></li>
-	                <li><a href="javascrip:void(0);">FAQ</a></li>
-	            </ul>
-			</div>
-			<div class="callouts">
-				<ul>
-	                <span>Company Details</span>
-	                <li><a href="javascrip:void(0);">About Us</a></li>
-					<li><a href="javascrip:void(0);">Terms &amp; Conditon</a></li>
-					<li><a href="javascrip:void(0);">Privacy policy</a></li>
-					<li><a href="javascrip:void(0);">Refund and Cancellation</a></li>
-	            </ul>
-			</div>
-			<div class="callouts">
-				<ul>
-	                <span>Information</span>
-	                <li><a href="javascrip:void(0);">Disclaimers</a></li>
-	                <li><a href="javascrip:void(0);">report misuse</a></li>
-					<li><a href="javascrip:void(0);">Blog</a></li>
-					<li><a href="javascrip:void(0);"> Advertise With Us</a></li>
-	            </ul>
-			</div>
-			<div class="callouts">
-				<ul>
-	                <span>More</span>
-					<li><a href="javascrip:void(0);">Add Your Sucess Story</a></li>
-	                <li><a href="javascrip:void(0);">Success Stories</a></li>
-	                <li><a href="javascrip:void(0);">Packages</a></li>
-					<li><a href="javascrip:void(0);">Reviews and Ratings</a></li>
-	            </ul>
-			</div>
-		</div>
-		<div class="sub_footer">
-			<span><img src="images/logo.png" width="70" alt=""> Rishtey Indian is the trade mark Of NISWARTH SEWA-110014</span>
-			<ul>
-				<li>
-					<a href="javascript:void(0);">
-						<i class="fab fa-facebook-f"></i>
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);">
-						<i class="fab fa-twitter"></i>
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);">
-						<i class="fab fa-youtube"></i>
-					</a>
-				</li>
-				<p>© 2018 - 2020 rishteyindian.com</p>
-			</ul>
-		</div>
-	</div>
-</footer>
-
-
-<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="js/globalSite.js"></script>
+<?php include_once('./components/footer/footerInfo.php') ?>
 </body>
 </html>

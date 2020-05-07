@@ -23,19 +23,20 @@
                                 <th scope="col">Posted By</th>
                                 <th scope="col">Display Order</th>
                                 <th scope="col">Blog Status</th>
-
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                                 while ($blog_data = $result->fetch_assoc()) {
                                     echo '<tr>
-                                            <th scope="row"><a href="add.php?id=' . $blog_data['id'] . '">' . $blog_data['id'] . '</a></th>
+                                            <th scope="row">' . $blog_data['id'] . '</th>
                                             <td><img src="../../images/blogs/'.$blog_data['blog_image'].'" height="75px" width="50px"/></td>
                                             <td>' . $blog_data['blog_heading'] . '</td>
                                             <td>' . $blog_data['posted_by'] . '</td>
                                             <td>' . $blog_data['display_order'] . '</td>
                                             <td>' . (!$blog_data['blog_status'] ? 'Pending' : 'Approved') . '</td>
+                                            <td><a href="add.php?id=' . $blog_data['id'] . '"><button type="button" class="btn btn-primary">Update</button></a></td>
                                         </tr>';
                                 }
                             ?>

@@ -2,7 +2,16 @@
     require "lessphp/lessc.inc.php";
     $less = new lessc;
     $less->setFormatter("compressed");
-    $less->checkedCompile("less_assets/blog.less", "css/blog.css");
+	$less->checkedCompile("less_assets/blog.less", "css/blog.css");
+	include_once('./admin/connection/connection.php');
+
+	// fetch all blog data
+	$active = 1;
+	$stmt = $conn->prepare("SELECT id, blog_image, posted_by, blog_heading, posted_on FROM blogs WHERE blog_status = ? ");
+	$stmt->bind_param('i', $active);
+	$stmt->execute();
+	$blogResult = $stmt->get_result();
+	
 ?>
 
 <!DOCTYPE html>
@@ -17,18 +26,8 @@
 <body>
 
 
-<div class="top_head">
-	<div id="example-1">
-		<span>Get 21 Contacts Free On Being A New Member</span>
-		<span>Get 7 Contacts Free On Liking Our Facebook Page</span>
-		<span>Only For Indians</span>
-		<span>No Mediator</span>
-		<span>Nominal Package</span>
-		<span>Start Conversation</span>
-		<span>Every Profile Is Phone Verified</span>
-		<span>Niswarth Sewa</span>
-	</div>
-</div>
+<?php include_once('./components/header/topHead.php');  ?>
+
 <header class="head_variations">
 	<div class="wrapper">
 		<span class="logo">
@@ -60,149 +59,25 @@
 			<span class="pg_headings">Blogs</span>
 		</div>
 		<ul>
-			<li>
-				<a href="javascript:void(0);">
-					<div class="item_image">
-						<img src="https://images.unsplash.com/photo-1551540827-6c8ae1aaedbb?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ">
-					</div>
-					<div class="info">
-						<p>Top 7 Signs To Know If He Is Your Soulmate</p>
-						<i>March, 2017 by <strong>John Doe</strong></i>
-						<span class="btn clr_fill">Read More</span>
-					</div>
-				</a>
-			</li>
-			<li>
-				<a href="javascript:void(0);">
-					<div class="item_image">
-						<img src="https://images.unsplash.com/photo-1551540827-6c8ae1aaedbb?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ">
-					</div>
-					<div class="info">
-						<p>Top 7 Signs To Know If He Is Your Soulmate</p>
-						<i>March, 2017 by <strong>John Doe</strong></i>
-						<span class="btn clr_fill">Read More</span>
-					</div>
-				</a>
-			</li>
-			<li>
-				<a href="javascript:void(0);">
-					<div class="item_image">
-						<img src="https://images.unsplash.com/photo-1551540827-6c8ae1aaedbb?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ">
-					</div>
-					<div class="info">
-						<p>Top 7 Signs To Know If He Is Your Soulmate</p>
-						<i>March, 2017 by <strong>John Doe</strong></i>
-						<span class="btn clr_fill">Read More</span>
-					</div>
-				</a>
-			</li>
-			<li>
-				<a href="javascript:void(0);">
-					<div class="item_image">
-						<img src="https://images.unsplash.com/photo-1551540827-6c8ae1aaedbb?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ">
-					</div>
-					<div class="info">
-						<p>Top 7 Signs To Know If He Is Your Soulmate</p>
-						<i>March, 2017 by <strong>John Doe</strong></i>
-						<span class="btn clr_fill">Read More</span>
-					</div>
-				</a>
-			</li>
-
-			<li>
-				<a href="javascript:void(0);">
-					<div class="item_image">
-						<img src="https://images.unsplash.com/photo-1551540827-6c8ae1aaedbb?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ">
-					</div>
-					<div class="info">
-						<p>Top 7 Signs To Know If He Is Your Soulmate</p>
-						<i>March, 2017 by <strong>John Doe</strong></i>
-						<span class="btn clr_fill">Read More</span>
-					</div>
-				</a>
-			</li>
-			<li>
-				<a href="javascript:void(0);">
-					<div class="item_image">
-						<img src="https://images.unsplash.com/photo-1551540827-6c8ae1aaedbb?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ">
-					</div>
-					<div class="info">
-						<p>Top 7 Signs To Know If He Is Your Soulmate</p>
-						<i>March, 2017 by <strong>John Doe</strong></i>
-						<span class="btn clr_fill">Read More</span>
-					</div>
-				</a>
-			</li>
+			<?php 
+			while( $blogData = $blogResult->fetch_assoc()){
+				echo '<li>
+						<a href="blog_detail?id='.$blogData['id'].'">
+						<div class="item_image">
+							<img src="images/blogs/'.$blogData['blog_image'].'">
+						</div>
+						<div class="info">
+							<p>'.$blogData['blog_heading'].'</p>
+							<i>'.$blogData['posted_on'].' by <strong>'.$blogData['posted_by'].'</strong></i>
+							<span class="btn clr_fill">Read More</span>
+						</div>
+						</a>
+					</li>';
+				};?>
 		</ul>
 	</div>
 </section>
 
-<footer>
-	<div class="wrapper">
-		<div class="footer">
-			<div class="callouts">
-				<ul>
-					<span>Need Help</span>
-	                <li><a href="javascrip:void(0);">Contact Us</a></li>
-					<li><a href="javascrip:void(0);"> Need Help</a></li>
-	                <li><a href="javascrip:void(0);">Customer Support</a></li>
-	                <li><a href="javascrip:void(0);">FAQ</a></li>
-	            </ul>
-			</div>
-			<div class="callouts">
-				<ul>
-	                <span>Company Details</span>
-	                <li><a href="javascrip:void(0);">About Us</a></li>
-					<li><a href="javascrip:void(0);">Terms &amp; Conditon</a></li>
-					<li><a href="javascrip:void(0);">Privacy policy</a></li>
-					<li><a href="javascrip:void(0);">Refund and Cancellation</a></li>
-	            </ul>
-			</div>
-			<div class="callouts">
-				<ul>
-	                <span>Information</span>
-	                <li><a href="javascrip:void(0);">Disclaimers</a></li>
-	                <li><a href="javascrip:void(0);">report misuse</a></li>
-					<li><a href="javascrip:void(0);">Blog</a></li>
-					<li><a href="javascrip:void(0);"> Advertise With Us</a></li>
-	            </ul>
-			</div>
-			<div class="callouts">
-				<ul>
-	                <span>More</span>
-					<li><a href="javascrip:void(0);">Add Your Sucess Story</a></li>
-	                <li><a href="javascrip:void(0);">Success Stories</a></li>
-	                <li><a href="javascrip:void(0);">Packages</a></li>
-					<li><a href="javascrip:void(0);">Reviews and Ratings</a></li>
-	            </ul>
-			</div>
-		</div>
-		<div class="sub_footer">
-			<span><img src="images/logo.png" width="70" alt=""> Rishtey Indian is the trade mark Of NISWARTH SEWA-110014</span>
-			<ul>
-				<li>
-					<a href="javascript:void(0);">
-						<i class="fab fa-facebook-f"></i>
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);">
-						<i class="fab fa-twitter"></i>
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);">
-						<i class="fab fa-youtube"></i>
-					</a>
-				</li>
-				<p>© 2018 - 2020 rishteyindian.com</p>
-			</ul>
-		</div>
-	</div>
-</footer>
-
-
-<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="js/globalSite.js"></script>
+<?php include_once('./components/footer/footerInfo.php') ?>
 </body>
 </html>

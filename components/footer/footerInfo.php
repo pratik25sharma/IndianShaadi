@@ -24,7 +24,7 @@
                     <span>Information</span>
                     <li><a href="javascrip:void(0);">Disclaimers</a></li>
                     <li><a href="javascrip:void(0);">report misuse</a></li>
-                    <li><a href="javascrip:void(0);">Blog</a></li>
+                    <li><a href="blog_list.php">Blog</a></li>
                     <li><a href="javascrip:void(0);"> Advertise With Us</a></li>
                 </ul>
             </div>
@@ -61,3 +61,12 @@
         </div>
     </div>
 </footer>
+
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/globalSite.js"></script>
+<script type="text/javascript" src="js/slick.min.js"></script>
+<script type="text/javascript">
+    $("#removeNotification").click(function(){
+        $(this).removeClass('active');
+    });
+</script>
