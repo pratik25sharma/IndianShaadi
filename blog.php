@@ -1,8 +1,11 @@
 <?php
+	include_once('./admin/connection/con.php');
     require "lessphp/lessc.inc.php";
     $less = new lessc;
     $less->setFormatter("compressed");
-    $less->checkedCompile("less_assets/blog.less", "css/blog.css");
+	$less->checkedCompile("less_assets/blog.less", "css/blog.css");
+	
+	include_once('./utils/fn.utils.php');
 ?>
 
 <!DOCTYPE html>
@@ -13,22 +16,65 @@
 	<link rel="stylesheet" type="text/css" href="css/blog.css">
 	<link rel="stylesheet" type="text/css" href="css/media.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+	<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+	<script>tinymce.init({selector:'textarea', mode : "exact",});</script>
 </head>
 <body>
 
 
-<div class="top_head">
-	<div id="example-1">
-		<span>Get 21 Contacts Free On Being A New Member</span>
-		<span>Get 7 Contacts Free On Liking Our Facebook Page</span>
-		<span>Only For Indians</span>
-		<span>No Mediator</span>
-		<span>Nominal Package</span>
-		<span>Start Conversation</span>
-		<span>Every Profile Is Phone Verified</span>
-		<span>Niswarth Sewa</span>
-	</div>
-</div>
+<?php 
+	include_once('./components/header/topHead.php');
+	
+	if($_POST){
+
+		// validate the profile data
+		$userData = $_POST['userProfile'];
+		$blogData = $_POST['blog'];
+		$userUploadeFile = $_FILES['blog'];
+		
+		// check for validity of username, useremail, number, 
+		if(checkIsValidName($userData['username']) && 
+			checkIsValidEmail($userData['email']) && 
+			checkIsValidName($userData['name']) && 
+			checkIsValidNumber($userData['number']) && 
+			checkIsValidFile($userUploadeFile) && 
+			checkIsValidName($blogData['heading'])
+		){
+			// save user data
+			$blogHeading = $bannerHeader = $blogData['heading'];
+			$blogData = $blogData['body'];
+			$postedBy = 1234;
+
+			// get file extension
+			$extension = explode('.', $userUploadeFile['name']['image']);
+			$extension = array_pop($extension);
+
+			$uploadDir = './images/blogs/';
+			$fileName = (time() .'-'. $postedBy.'.'.$extension);
+			$uploadFile = $uploadDir.$fileName;
+			move_uploaded_file($userUploadeFile["tmp_name"]['image'], $uploadFile);
+
+			$sql = 'INSERT INTO blogs (posted_by, blog_image, blog_heading, blog_text, banner_header) VALUES ( ?, ?, ?, ?, ?)';
+			$stmt = $conn->prepare($sql);
+			$stmt->bind_param("issss", $postedBy, $fileName, $blogHeading, $blogData, $bannerHeader);
+			$stmt->execute();
+
+		} else {
+			// throw the message to user
+			echo '<div class="form_messages error">
+				'.$_SESSION['error']['msg'].'
+				<i></i>
+				<a href="#!" class="del"></a>
+				</div>';
+		} 
+
+		// die('outside');
+		// echo "<pre>";
+		// print_r($_POST);
+		// print_r($_SESSION);
+		// die;
+	}
+?>
 <header class="head_variations">
 	<div class="wrapper">
 		<span class="logo">
@@ -53,7 +99,11 @@
 		</nav>
 	</div>
 </header>
-
+<div class="form_messages error active">
+				<?= $_SESSION['error']['msg'] ?>
+				<i></i>
+				<a href="#!" class="del"></a>
+				</div>
 <section class="blogs_admin">
 	<div class="wrapper">
 		<div class="head">
@@ -64,49 +114,49 @@
 			<span>If Member please write the blog after login</span>
 		</div>
 		<div class="jumbo_card">
-			<form class="default_form">
+			<form class="default_form" action="" method="POST" enctype="multipart/form-data">
 				<fieldset>
 					<div class="s_row">
-	                    <input type="text" class="label_jump" required="required">
+	                    <input type="text" class="label_jump" required="required" name="userProfile[name]">
 	                    <label>Enter your Name*</label>
 	                </div>
 					<div class="s_row">
-	                    <input type="email" class="label_jump" required="required">
+	                    <input type="email" class="label_jump" required="required"  name="userProfile[email]">
 	                    <label>Enter your Email ID*</label>
 	                </div>
 	                <div class="s_row">
-	                    <input type="tel" class="label_jump" required="required">
+	                    <input type="tel" class="label_jump" required="required"  name="userProfile[number]">
 	                    <label>Enter your Phone number*</label>
 	                </div>
 	                <div class="secondary_title">
 			            <span>BLOG PROFILE DETAILS</span>
 			        </div>
 			        <div class="s_row">
-	                    <input type="text" class="label_jump" required="required">
+	                    <input type="text" class="label_jump" required="required"  name="userProfile[username]">
 	                    <label>Profile Name*</label>
 	                </div>
 	                <div class="s_row">
-	                    <input type="text" class="label_jump" required="required">
-	                    <label>Profile Heading*</label>
+	                    <input type="text" class="label_jump" required="required"  name="blog[heading]">
+	                    <label>Blog Heading*</label>
 	                </div>
 	                <div class="s_row">
-	                    <input type="file" class="label_jump" required="required">
+	                    <input type="file" class="label_jump" required="required"  name="blog[image]">
 	                    <label class="label-valid">Profile Photo*</label>
 	                </div>
 	                <div class="secondary_title">
 			            <span>WRITE YOUR BLOG</span>
 			        </div>
 	                <div class="s_row">
-	                    <textarea></textarea>
+	                    <textarea name="blog[body]"></textarea>
 	                </div>
 	                <div class="s_row">
 	                	<span>
-		                	<input type="checkbox" id="term_condition" name="">
+		                	<input type="checkbox" id="term_condition" name="tnc">
 		                	<label for="term_condition">I agree to <a href="#!">terms and conditions</a></label>
 		                </span>
 	                </div>
 	                <div class="s_row">
-	                	<button class="btn clr_fill">Continue</button>
+	                	<button class="btn clr_fill">Post</button>
 	                </div>
 				</fieldset>
 			</form>

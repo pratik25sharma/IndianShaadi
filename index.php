@@ -2,7 +2,8 @@
     require "lessphp/lessc.inc.php";
     $less = new lessc;
     $less->setFormatter("compressed");
-    $less->checkedCompile("less_assets/home.less", "css/home.css");
+	$less->checkedCompile("less_assets/home.less", "css/home.css");
+	include_once('./admin/connection/con.php');
     //$less->checkedCompile("less_assets/desktop/slick.less", "css/desktop_css/slick.css");
 ?>
 
@@ -18,91 +19,16 @@
 </head>
 <body>
 
+<!-- top header -->
+<?php 
+	include_once('./components/header/topHead.php'); 
+	include_once('./components/header/loginSection.php');
+	include_once('./components/header/bigBanner.php'); 
+?>
 
-<div class="top_head">
-	<div id="example-1">
-		<span>Get 21 Contacts Free On Being A New Member</span>
-		<span>Get 7 Contacts Free On Liking Our Facebook Page</span>
-		<span>Only For Indians</span>
-		<span>No Mediator</span>
-		<span>Nominal Package</span>
-		<span>Start Conversation</span>
-		<span>Every Profile Is Phone Verified</span>
-		<span>Niswarth Sewa</span>
-	</div>
-</div>
-<header>
-	<div class="wrapper">
-		<span class="logo">
-			<a href="javascript:void(0);">
-				<img src="images/logo.png" alt="Rishety Indian logo" width="100">
-			</a>
-		</span>
-		<nav>
-			<a class="mob_menu"><i class="fas fa-bars"></i></a>
-			<ul>
-				<a class="close"><i class="fas fa-times"></i></a>
-				<li>
-					<a href="javascript:void(0);"><i class="fas fa-user-tie"></i> New Member</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);"><i class="fas fa-sign-in-alt"></i> Login</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);"><i class="fas fa-video"></i> Video</a>
-				</li>
-			</ul>
-		</nav>
-	</div>
-</header>
-<div class="banner">
-	<ul class="fade slider">
-		<li>
-			<img src="images/banner-1.jpg" alt="Home banner">
-			<div class="banner_head">
-				<span class="head">Meet Big And Beautiful Love Here!</span>
-				<a href="javascript:void(0);">Join Now <i class="fas fa-arrow-right"></i></a>
-			</div>
-		</li>
-		<li>
-			<img src="images/bg-1.jpg" alt="Home banner">
-			<div class="banner_head">
-				<span class="head">Meet Big And Beautiful Love Here!</span>
-				<a href="javascript:void(0);">Join Now <i class="fas fa-arrow-right"></i></a>
-			</div>
-		</li>
-	</ul>
-</div>
 
-<section class="blogs">
-	<div class="wrapper">
-		<ul>
-			<li>
-				<img src="images/blog.jpg">
-				<p>Top 7 Signs To Know If He Is Your Soulmate</p>
-				<span>March, 2017 by <strong>John Doe</strong></span>
-			</li>
-
-			<li>
-				<img src="images/blog.jpg">
-				<p>Top 7 Signs To Know If He Is Your Soulmate</p>
-				<span>March, 2017 by <strong>John Doe</strong></span>
-			</li>
-
-			<li>
-				<img src="images/blog.jpg">
-				<p>Top 7 Signs To Know If He Is Your Soulmate</p>
-				<span>March, 2017 by <strong>John Doe</strong></span>
-			</li>
-
-			<li>
-				<img src="images/blog.jpg">
-				<p>Top 7 Signs To Know If He Is Your Soulmate</p>
-				<span>March, 2017 by <strong>John Doe</strong></span>
-			</li>
-		</ul>
-	</div>
-</section>
+<!-- Blog Section  -->
+<?php include_once('./components/blogs/blogs.php');?>
 
 <section class="search_profile">
 	<div class="wrapper">
@@ -272,69 +198,7 @@
 	</div>
 </div>
 
-<footer>
-	<div class="wrapper">
-		<div class="footer">
-			<div class="callouts">
-				<ul>
-					<span>Need Help</span>
-	                <li><a href="javascrip:void(0);">Contact Us</a></li>
-					<li><a href="javascrip:void(0);"> Need Help</a></li>
-	                <li><a href="javascrip:void(0);">Customer Support</a></li>
-	                <li><a href="javascrip:void(0);">FAQ</a></li>
-	            </ul>
-			</div>
-			<div class="callouts">
-				<ul>
-	                <span>Company Details</span>
-	                <li><a href="javascrip:void(0);">About Us</a></li>
-					<li><a href="javascrip:void(0);">Terms &amp; Conditon</a></li>
-					<li><a href="javascrip:void(0);">Privacy policy</a></li>
-					<li><a href="javascrip:void(0);">Refund and Cancellation</a></li>
-	            </ul>
-			</div>
-			<div class="callouts">
-				<ul>
-	                <span>Information</span>
-	                <li><a href="javascrip:void(0);">Disclaimers</a></li>
-	                <li><a href="javascrip:void(0);">report misuse</a></li>
-					<li><a href="javascrip:void(0);">Blog</a></li>
-					<li><a href="javascrip:void(0);"> Advertise With Us</a></li>
-	            </ul>
-			</div>
-			<div class="callouts">
-				<ul>
-	                <span>More</span>
-					<li><a href="javascrip:void(0);">Add Your Sucess Story</a></li>
-	                <li><a href="javascrip:void(0);">Success Stories</a></li>
-	                <li><a href="javascrip:void(0);">Packages</a></li>
-					<li><a href="javascrip:void(0);">Reviews and Ratings</a></li>
-	            </ul>
-			</div>
-		</div>
-		<div class="sub_footer">
-			<span><img src="images/logo.png" width="70" alt=""> Rishtey Indian is the trade mark Of NISWARTH SEWA-110014</span>
-			<ul>
-				<li>
-					<a href="javascript:void(0);">
-						<i class="fab fa-facebook-f"></i>
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);">
-						<i class="fab fa-twitter"></i>
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);">
-						<i class="fab fa-youtube"></i>
-					</a>
-				</li>
-				<p>© 2018 - 2020 rishteyindian.com</p>
-			</ul>
-		</div>
-	</div>
-</footer>
+<?php include_once('./components/footer/footerInfo.php'); ?>
 
 
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
