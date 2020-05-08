@@ -44,6 +44,12 @@ if (!empty($_GET['id'])) {
                                 </div>
                             </div>
                             <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Blog Image</label></div>
+                                <div class="col-12 col-md-9">
+                                    <img src="../../images/blogs/<?= $blog_data['blog_image'] ?>" height="200px" width="200px"/>
+                                </div>
+                            </div>
+                            <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Blog Heading</label></div>
                                 <div class="col-12 col-md-9">
                                     <input type="text" id="text-input" name="blog_header" placeholder="Text" class="form-control" value="<?= (!empty($blog_data['id']) ? $blog_data['blog_heading'] : '') ?>" disabled>

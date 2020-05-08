@@ -17,11 +17,12 @@
 		<ul>
             <?php
                 while ($blog_data = $result->fetch_assoc()) {
+                    $time=strtotime($blog_data['posted_on']); 
                     echo '<li>
                         <a href="blog_detail.php?id='.$blog_data['id'].'">
                         <span><img src="./images/blogs/'.$blog_data['blog_image'].'" /></span>
                         <p>'.$blog_data['blog_heading'].'</p>
-                        <i>'.$blog_data['posted_on'].' by <strong>'.$blog_data['posted_by'].'</strong></i>
+                        <i>'.date("F",$time).', '.date("Y",$time).' by <strong>'.$blog_data['posted_by'].'</strong></i>
                         </a>
                     </li>';
                 }

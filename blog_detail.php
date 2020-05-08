@@ -73,7 +73,7 @@
 			</span>
 			<h1>
 				<?= $blogData['blog_heading'] ?>
-				<i>March, 2017 by <strong><?= $blogData['posted_by'] ?></strong></i>
+				<i><?php $time=strtotime($blogData['posted_on']); echo date("F",$time).', '.date("Y",$time); ?> by <strong><?= $blogData['posted_by'] ?></strong></i>
 			</h1>
 		</div>
 		<div class="item_content">

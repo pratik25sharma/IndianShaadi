@@ -45,7 +45,7 @@ function rightPanelHeader($userOption, $adminAvatarImage){
 }
 
 
-function createBreadCrumbs($urlLink){
+function createBreadCrumbs($urlLink, $parentLink = ''){
     $urls = explode('/', $urlLink);
     [$currentUrl, ] = explode('.', array_pop($urls)); 
     $parentUrl = array_pop($urls);
@@ -64,8 +64,8 @@ function createBreadCrumbs($urlLink){
                             <div class="page-header float-right">
                                 <div class="page-title">
                                     <ol class="breadcrumb text-right">
-                                        <li><a href="/index/admin">Dashboard</a></li>
-                                        <li><a href="/index/admin/view.php">'.$parentUrl.'</a></li>
+                                        <li><a href="../">Dashboard</a></li>
+                                        <li><a href="../">'.$parentUrl.'</a></li>
                                         <li class="active">'.$currentUrl.'</li>
                                     </ol>
                                 </div>
