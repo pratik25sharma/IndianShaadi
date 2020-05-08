@@ -20,17 +20,18 @@
                                 <th scope="col">#Id</th>
                                 <th scope="col">Banner</th>
                                 <th scope="col">Status</th>
-
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             while ($banner_data = $result->fetch_assoc()) {
                                 echo '<tr>
-                                                    <th scope="row"><a href="add.php?id=' . $banner_data['id'] . '">' . $banner_data['id'] . '</a></th>
-                                                    <td>' . $banner_data['banner_header'] . '</td>
-                                                    <td>' . ($banner_data['status'] ? 'Active' : 'Deleted') . '</td>
-                                                </tr>';
+                                        <th scope="row">' . $banner_data['id'] . '</th>
+                                        <td>' . $banner_data['banner_header'] . '</td>
+                                        <td>' . ($banner_data['status'] ? 'Active' : 'Deleted') . '</td>
+                                        <td><a href="add.php?id=' . $banner_data['id'] . '"><button type="button" class="btn btn-primary">Update</button></a></td>
+                                    </tr>';
                             }
                             ?>
                         </tbody>
