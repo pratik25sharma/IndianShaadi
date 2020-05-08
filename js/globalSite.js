@@ -1,19 +1,7 @@
 $(document).ready(function(){
     //$('.banner').css('height', $(window).height() - 40);
-
-    labeljump();
-
-    $('.fade').slick({
-		dots: false,
-		infinite: true,
-		speed: 500,
-		fade: true,
-		cssEase: 'linear',
-		arrows: false,
-		autoplay: true,
-		pauseOnHover:false
-	});
-	$("#example-1").eocjsNewsticker({
+  labeljump();
+	$(".topBar").eocjsNewsticker({
 	    speed: 25,
 	    timeout: 0.5
 	});
@@ -23,7 +11,16 @@ $(document).ready(function(){
 	$('nav ul .close').click(function(){
 		$(this).parents().removeClass('active');
 	});
-
+  $('.fade').slick({
+    dots: false,
+    infinite: true,
+    speed: 500,
+    fade: true,
+    cssEase: 'linear',
+    arrows: false,
+    autoplay: true,
+    pauseOnHover:false
+  });
   $('.responsive').slick({
     dots: false,
     infinite: true,
