@@ -30,7 +30,10 @@
                                         <th scope="row">' . $banner_data['id'] . '</th>
                                         <td>' . $banner_data['banner_header'] . '</td>
                                         <td>' . ($banner_data['status'] ? 'Active' : 'Deleted') . '</td>
-                                        <td><a href="add.php?id=' . $banner_data['id'] . '"><button type="button" class="btn btn-primary">Update</button></a></td>
+                                        <td>
+                                            <a href="add.php?id=' . $banner_data['id'] . '"><button type="button" class="btn btn-primary">Update</button></a>
+                                            <a href="delete.php?id=' . $banner_data['id'] . '"><button type="button" class="btn btn-danger">Delete</button></a>
+                                        </td>
                                     </tr>';
                             }
                             ?>

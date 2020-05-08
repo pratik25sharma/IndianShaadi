@@ -36,7 +36,10 @@
                                             <td>' . $blog_data['posted_by'] . '</td>
                                             <td>' . $blog_data['display_order'] . '</td>
                                             <td>' . (!$blog_data['blog_status'] ? 'Pending' : 'Approved') . '</td>
-                                            <td><a href="add.php?id=' . $blog_data['id'] . '"><button type="button" class="btn btn-primary">Update</button></a></td>
+                                            <td>
+                                                <a href="add.php?id=' . $blog_data['id'] . '"><button type="button" class="btn btn-primary">Update</button></a>
+                                                <a href="delete.php?id=' . $blog_data['id'] . '"><button type="button" class="btn btn-danger">Delete</button></a>
+                                            </td>
                                         </tr>';
                                 }
                             ?>
