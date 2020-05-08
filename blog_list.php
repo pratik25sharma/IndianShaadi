@@ -61,6 +61,7 @@
 		<ul>
 			<?php 
 			while( $blogData = $blogResult->fetch_assoc()){
+				$time=strtotime($blogData['posted_on']); 
 				echo '<li>
 						<a href="blog_detail?id='.$blogData['id'].'">
 						<div class="item_image">
@@ -68,7 +69,7 @@
 						</div>
 						<div class="info">
 							<p>'.$blogData['blog_heading'].'</p>
-							<i>'.$blogData['posted_on'].' by <strong>'.$blogData['posted_by'].'</strong></i>
+							<i>'.date("F",$time).', '.date("Y",$time).' by <strong>'.$blogData['posted_by'].'</strong></i>
 							<span class="btn clr_fill">Read More</span>
 						</div>
 						</a>

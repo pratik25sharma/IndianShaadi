@@ -25,6 +25,7 @@
                     <li><a href="javascrip:void(0);">Disclaimers</a></li>
                     <li><a href="javascrip:void(0);">report misuse</a></li>
                     <li><a href="blog_list.php">Blog</a></li>
+                    <li><a href="blog.php">Write Blog</a></li>
                     <li><a href="javascrip:void(0);"> Advertise With Us</a></li>
                 </ul>
             </div>
