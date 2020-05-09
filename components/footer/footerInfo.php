@@ -70,4 +70,44 @@
     $("#removeNotification").click(function(){
         $(this).removeClass('active');
     });
+    $("#nextBlog").click(function(){
+        var currentLast = $("#currentLastBlog").val()
+        $("#nextBlog").removeAttr('disabled');
+        $("#prevBlog").removeAttr('disabled');
+        $("#prevBlog").css("opacity", 1);
+        $("#nextBlog").css("opacity", 1);
+        $.ajax({
+            url: "./components/ajax/fetchBlog.php", 
+            data: {currentLast: currentLast, type: 'incr'},
+            success: function(result){
+                result = JSON.parse(result);
+                $("#currentLastBlog").val(result.currentCount);
+                $("#blogsData").html(result.data);
+                if(result.disabledValue && result.disabledValue == 'next'){
+                    $("#nextBlog").css("opacity", .5);
+                    $("#nextBlog").attr("disabled", true);
+                };
+            }
+        });
+    })
+    $("#prevBlog").click(function(){
+        $("#nextBlog").removeAttr('disabled');
+        $("#prevBlog").removeAttr('disabled');
+        $("#prevBlog").css("opacity", 1);
+        $("#nextBlog").css("opacity", 1);
+        var currentLast = $("#currentLastBlog").val()
+        $.ajax({
+            url: "./components/ajax/fetchBlog.php", 
+            data: {currentLast: currentLast, type: 'dec'},
+            success: function(result){
+                result = JSON.parse(result);
+                $("#currentLastBlog").val(result.currentCount);
+                $("#blogsData").html(result.data);
+                if(result.currentCount < 1){
+                    $("#prevBlog").attr("disabled", true);
+                    $("#prevBlog").css("opacity", .5);
+                };
+            }
+        });
+    })
 </script>

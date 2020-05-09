@@ -21,7 +21,7 @@
 
 <!-- top header -->
 <?php 
-	include_once('./components/header/topHead.php'); 
+	include('./components/header/topHead.php'); 
 	include_once('./components/header/loginSection.php');
 	include_once('./components/header/bigBanner.php'); 
 ?>

@@ -1,6 +1,6 @@
 
     <div class="top_head">
-    <div class="topBar">
+    <div id="example-1">
     <?php
 
         $active = 1;

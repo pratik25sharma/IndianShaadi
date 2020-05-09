@@ -40,7 +40,7 @@ function setSessionErrorMessage($msg){
 
 function checkForTNC($tnc, $type){
     setSessionErrorMessage($type. ' should be checked before submitting blogs');
-    if(empty($tnc) || $tnc != "no" ){
+    if(empty($tnc) ){
         return false;
     }
     return true;

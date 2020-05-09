@@ -11,10 +11,11 @@
 <section class="blogs">
 	<div class="wrapper">
         <span class="bttns">
-            <button class="next arrow" type="button"></button>
-            <button class="prev arrow" type="button"></button>
+            <button class="next arrow" type="button" id="prevBlog" disabled></button>
+            <button class="prev arrow" type="button" id="nextBlog"></button>
+            <input type="hidden" value="0" id="currentLastBlog"/>
         </span>
-		<ul>
+		<ul id="blogsData">
             <?php
                 while ($blog_data = $result->fetch_assoc()) {
                     $time=strtotime($blog_data['posted_on']); 
