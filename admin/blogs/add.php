@@ -6,6 +6,7 @@ if ($_POST) { // data for submission
     // prepare and bind
     $blog_status = $_POST['blog_status'];
     $display_order = $_POST['display_order'];
+    $blogId = $_POST['data_update'];
 
     if (!empty($_POST['data_update'])) {
         // update the data

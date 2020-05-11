@@ -7,6 +7,14 @@ $allLeftPanels = array(
     'Header Banner' => array(
         'Add Banner' => '../banner/add.php', 
         'View Banner' => '../banner/view.php'
+    ),
+    'Image Banner' => array(
+        'Add Banner' => '../imagebanner/add.php', 
+        'View Banner' => '../imagebanner/view.php'
+    ),
+    'Text Banner' => array(
+        'Add Banner' => '../textbanner/add.php?id=1', 
+        'View Banner' => '../textbanner/view.php'
     )
 );
 

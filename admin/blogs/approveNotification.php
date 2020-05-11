@@ -1,6 +1,6 @@
 <?php
 
-    $mail_body = '<!doctype html>
+    $mail_body = '
     <html>
     <head>
     <meta charset="utf-8">
