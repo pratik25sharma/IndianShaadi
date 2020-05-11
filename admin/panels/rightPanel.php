@@ -45,7 +45,7 @@ function rightPanelHeader($userOption, $adminAvatarImage){
 }
 
 
-function createBreadCrumbs($urlLink, $parentLink = ''){
+function createBreadCrumbs($urlLink){
     $urls = explode('/', $urlLink);
     [$currentUrl, ] = explode('.', array_pop($urls)); 
     $parentUrl = array_pop($urls);
@@ -76,3 +76,5 @@ function createBreadCrumbs($urlLink, $parentLink = ''){
             </div>';
     return $str;
 }
+
+?>

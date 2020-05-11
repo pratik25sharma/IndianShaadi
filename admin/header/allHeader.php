@@ -10,4 +10,3 @@
     echo '<div id="right-panel" class="right-panel">';
     echo rightPanelHeader($userOption, $adminAvatarImage);
     echo createBreadCrumbs($_SERVER['PHP_SELF']);
-?>

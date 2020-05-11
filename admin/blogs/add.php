@@ -13,7 +13,10 @@ if ($_POST) { // data for submission
         $stmt->bind_param("iii", $blog_status, $display_order, $_POST['data_update']);
     }
     $stmt->execute();
-    
+
+    if($blog_status == 1){ // blog has been approved
+        include_once('./approveNotification.php');
+    }
 }
 
 if (!empty($_GET['id'])) {
