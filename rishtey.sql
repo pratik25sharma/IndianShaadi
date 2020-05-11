@@ -16,6 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `admin_user`
+--
+
+DROP TABLE IF EXISTS `admin_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `admin_user` (
+  `id` int(4) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admin_user`
+--
+
+LOCK TABLES `admin_user` WRITE;
+/*!40000 ALTER TABLE `admin_user` DISABLE KEYS */;
+INSERT INTO `admin_user` VALUES (1,'admin@admin.com','dc3c29850776b509861e6279882bf18cc4522b0c359ca6ade78b3f02',1,'2020-05-08 07:10:58');
+/*!40000 ALTER TABLE `admin_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `banner`
 --
 
@@ -59,7 +86,7 @@ CREATE TABLE `blogs` (
   `display_order` int(4) NOT NULL DEFAULT '0',
   `posted_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,8 +95,59 @@ CREATE TABLE `blogs` (
 
 LOCK TABLES `blogs` WRITE;
 /*!40000 ALTER TABLE `blogs` DISABLE KEYS */;
-INSERT INTO `blogs` VALUES (1,1234,'1588777980-1234.jpg','first post','<p><strong>My first post</strong></p>','first post',1,1,'2020-05-06 16:02:23'),(2,1234,'1588778137-1234.jpg','first post','<p><strong>My first post</strong></p>','first post',1,2,'2020-05-06 15:52:12'),(3,1234,'1588781010-1234.jpg','Second Post','<p><strong>Second Post</strong></p>','Second Post',1,0,'2020-05-06 16:03:45'),(4,1234,'1588781036-1234.jpg','Second Post','<p><strong>Second Post</strong></p>','Second Post',1,0,'2020-05-06 16:04:08'),(5,1234,'1588781884-1234.jpg','first post','<p>asdfsdf</p>','first post',0,0,'2020-05-06 16:18:04'),(6,1234,'1588781922-1234.jpg','first post','<p>asdfsdf</p>','first post',0,0,'2020-05-06 16:18:42'),(7,1234,'1588781924-1234.jpg','first post','<p>asdfsdf</p>','first post',0,0,'2020-05-06 16:18:44'),(8,1234,'1588781946-1234.jpg','first post','<p>asdfsdf</p>','first post',0,0,'2020-05-06 16:19:06'),(9,1234,'1588781954-1234.jpg','first post','<p>asdfsdf</p>','first post',0,0,'2020-05-06 16:19:14'),(10,1234,'1588781987-1234.jpg','first post','<p>asdfsdf</p>','first post',0,0,'2020-05-06 16:19:47'),(11,1234,'1588781989-1234.jpg','first post','<p>asdfsdf</p>','first post',0,0,'2020-05-06 16:19:49'),(12,1234,'1588782046-1234.jpg','first post','<p>asdfsdf</p>','first post',0,0,'2020-05-06 16:20:46'),(13,1234,'1588782084-1234.jpg','first post','<p>asdfsdf</p>','first post',0,0,'2020-05-06 16:21:24'),(14,1234,'1588782096-1234.jpg','first post','<p>asdfsdf</p>','first post',0,0,'2020-05-06 16:21:36'),(15,1234,'1588782142-1234.jpg','first post','<p>asdfsdf</p>','first post',0,0,'2020-05-06 16:22:22'),(16,1234,'1588782148-1234.jpg','first post','<p>asdfsdf</p>','first post',0,0,'2020-05-06 16:22:28'),(17,1234,'1588835457-1234.jpg','first post','<p>asdfsdf</p>','first post',0,0,'2020-05-07 07:10:57');
+INSERT INTO `blogs` VALUES (19,1234,'1588870933-1234.jpg','Second Post','<p>Scond Post</p>','Second Post',1,0,'2020-05-07 17:02:41'),(20,1234,'1588880932-1234.jpg','luckyPost','<p>This is the first post i am writing</p>','luckyPost',1,0,'2020-05-07 19:49:10'),(21,1234,'1588883324-1234.jpg','first post','<p>lkasdflaksjfaksdfksldfaksf</p>','first post',1,0,'2020-05-08 06:33:41'),(24,1234,'1588981275-1234.jpg','First post','<p>Secno</p>','First post',1,0,'2020-05-08 23:41:36'),(25,1234,'1588981357-1234.jpg','thrd','<p>Thr</p>','thrd',1,0,'2020-05-08 23:42:59');
 /*!40000 ALTER TABLE `blogs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `imagebanner`
+--
+
+DROP TABLE IF EXISTS `imagebanner`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `imagebanner` (
+  `id` int(4) NOT NULL AUTO_INCREMENT,
+  `banner_image` varchar(256) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `imagebanner`
+--
+
+LOCK TABLES `imagebanner` WRITE;
+/*!40000 ALTER TABLE `imagebanner` DISABLE KEYS */;
+INSERT INTO `imagebanner` VALUES (2,'1589213686.jpg',1,'2020-05-11 16:14:46'),(3,'1589211835.jpg',1,'2020-05-11 16:16:21');
+/*!40000 ALTER TABLE `imagebanner` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `textbanner`
+--
+
+DROP TABLE IF EXISTS `textbanner`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `textbanner` (
+  `id` int(4) NOT NULL AUTO_INCREMENT,
+  `title` varchar(256) NOT NULL,
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `textbanner`
+--
+
+LOCK TABLES `textbanner` WRITE;
+/*!40000 ALTER TABLE `textbanner` DISABLE KEYS */;
+INSERT INTO `textbanner` VALUES (1,'Meet Big And Beautiful Love Here !!!','2020-05-11 16:30:49');
+/*!40000 ALTER TABLE `textbanner` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -81,4 +159,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-07 19:43:32
+-- Dump completed on 2020-05-11 22:23:11
