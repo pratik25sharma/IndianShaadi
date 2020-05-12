@@ -395,7 +395,7 @@
 	                </div>
 				</form>
 
-				<form class="default_form" id="register_form2">
+				<form class="default_form" id="register_form2" style="display: none;">
 					<div class="form_group">
 						<div class="formBlock_heading">
 		                    <span>Family Information</span>
@@ -686,6 +686,18 @@
 					<div class="s_row submission">
 	                	<button class="btn clr_fill">Submit</button>
 	                </div>
+				</form>
+				<form class="default_form" id="register_form3">
+					<div class="form_group">
+						<div class="formBlock_heading">
+		                    <span>Contact Information</span>
+		                </div>
+		                <div class="form_details">
+		                	<div class="s_row">
+		                		<input type="text" name="">
+		                	</div>
+		                </div>
+					</div>
 				</form>
 			</div>
 		</div>
