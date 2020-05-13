@@ -18,6 +18,89 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
 </head>
 <body>
+<!-- POPUPS -->
+<div id="myModal" class="popup_box">
+	<div class="model_box">
+		<div class="model_box_child" id="loginpopup">
+			<span class="close_model">×</span>
+			<div class="login_data form_section">
+				<div class="title">
+		            <h3>Login to Rishteyindian.com</h3>
+		            <p>Not Registered? <a href="javascript:void(0);"class="open_model" data-target="registerpopup">CREATE AN ACCOUNT</a></p>
+		        </div>
+		        <div class="secondary_title">
+		            <span>Get yourself login</span>
+		        </div>
+
+		        <form class="default_form">
+		            <fieldset> 
+		                <div class="s_row">
+		                    <input type="text" class="label_jump">
+		                    <span></span>
+		                    <label>Enter your Email ID</label>
+		                </div>
+		                <div class="s_row">
+		                    <input type="text" class="label_jump">
+		                    <span></span>
+		                    <label>Enter your Pasword</label>
+		                </div>
+		                <span class="forgot_password">
+		                	<span>
+		                		<input type="checkbox" id="stay_signed" name="">
+		                		<label for="stay_signed">Stay Signed in</label>
+		                	</span>
+		                	<a href="javascript:void(0);">Forgot Password?</a>
+		                </span>
+		                <div class="btn_container">
+		                    <a class="btn clr_fill " href="javascript:void(0);">Login</a>
+		                </div>
+		            </fieldset>
+		        </form>
+			</div>	
+		</div>
+
+		<div class="model_box_child" id="registerpopup">
+			<span class="close_model">×</span>
+			<div class="login_data form_section">
+				<div class="title">
+		            <h3>Register to Rishteyindian.com</h3>
+		            <p>Click here for <a href="javascript:void(0);"class="open_model" data-target="loginpopup">LOGIN</a></p>
+		        </div>
+		        <div class="secondary_title">
+		            <span>Get yourself Registered</span>
+		        </div>
+
+		        <form class="default_form">
+		            <fieldset> 
+		                <div class="s_row">
+		                    <input type="text" class="label_jump">
+		                    <span></span>
+		                    <label>Enter your Email ID</label>
+		                </div>
+		                <div class="s_row">
+		                    <input type="Pasword" class="label_jump">
+		                    <span></span>
+		                    <label>Enter your Pasword</label>
+		                </div>
+		                <div class="s_row">
+		                    <input type="Pasword" class="label_jump">
+		                    <span></span>
+		                    <label>Confirm Pasword</label>
+		                </div>
+		                <div class="btn_container">
+		                    <a class="btn clr_fill " href="javascript:void(0);">Sign In</a>
+		                </div>
+		            </fieldset>
+		        </form>
+			</div>	
+		</div>
+
+		<div class="model_box_child video_sc" id="rishteyindian_video">
+			<span class="close_model">×</span>
+			<iframe width="100%" class="video_iframe" src="https://www.youtube.com/embed/NsMdeAZvUAo"></iframe>
+		</div>
+	</div>
+</div>
 
 <!-- top header -->
 <?php 
