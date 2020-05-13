@@ -86,13 +86,13 @@
 			<ul>
 				<a class="close"><i class="fas fa-times"></i></a>
 				<li>
-					<a href="javascript:void(0);"><i class="fas fa-user-tie"></i> New Member</a>
+					<a href="javascript:void(0);" class="open_model" data-target="registerpopup"><i class="fas fa-user-tie"></i> New Member</a>
 				</li>
 				<li>
-					<a href="javascript:void(0);"><i class="fas fa-sign-in-alt"></i> Login</a>
+					<a href="javascript:void(0);" class="open_model" data-target="loginpopup"><i class="fas fa-sign-in-alt"></i> Login</a>
 				</li>
 				<li>
-					<a href="javascript:void(0);"><i class="fas fa-video"></i> Video</a>
+					<a href="javascript:void(0);" class="open_modelf" data-target="rishteyindian_video"><i class="fas fa-video"></i> Video</a>
 				</li>
 			</ul>
 		</nav>
