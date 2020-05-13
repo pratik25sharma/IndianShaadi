@@ -132,3 +132,49 @@
 		}
 	}
 }
+.crop_image{
+	width: 53%;
+	height: 400px;
+	padding-bottom:50px;
+}
+.cropimage_preview{
+	width: 45%;
+	ul{
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		padding: 10px;
+		max-height: 400px;
+		overflow: auto;
+		margin: 0;
+		li{
+			width: 75px;
+			height: 75px;
+			.border-radius(4px);
+			overflow: hidden;
+			border: 2px solid @black;
+			margin-bottom: 10px;
+			position: relative;
+			i.close {
+			    border: none;
+			    display: inline-block;
+			    padding: 0 8px;
+			    vertical-align: middle;
+			    overflow: hidden;
+			    text-decoration: none;
+			    text-align: center;
+			    cursor: pointer;
+			    white-space: nowrap;
+			    position: absolute;
+			    right: 0;
+			    top: 0;
+			    font-size: 14px;
+			    color: @FontColorP;
+			    z-index: 1;
+			    font-family: sans-serif;
+			    font-style: normal;
+			    background-color: @white;
+			}
+		}
+	}
+}

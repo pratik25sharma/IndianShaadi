@@ -66,6 +66,13 @@
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="js/globalSite.js"></script>
 <script type="text/javascript" src="js/slick.min.js"></script>
+<script src="js/croppie.js"></script>
+<script>
+$('.demo').croppie({
+    url: 'images/banner-1.jpg',
+});
+
+</script>
 <script type="text/javascript">
     $("#removeNotification").click(function(){
         $(this).removeClass('active');

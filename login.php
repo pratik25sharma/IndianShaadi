@@ -15,6 +15,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/login.css">
 	<link rel="stylesheet" type="text/css" href="css/media.css">
+	<link rel="stylesheet" href="css/croppie.css" />
 	<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"> -->
 </head>
 <body>
@@ -695,9 +696,69 @@
 		                <div class="form_details">
 		                	<div class="s_row">
 		                		<input type="text" name="">
+		                		<label>Contact Number</label>
 		                	</div>
+		                	<div class="s_row">
+		                		<input type="text" name="">
+		                		<label>Email ID</label>
+		                	</div>
+		                	<div class="s_row f_width">
+		                		<span>
+		                    		<input type="radio" name="" id="male">
+		                    		<label for="male"> Public: Every member can able to see your privacy details.</label>
+		                    	</span>
+		                    	<span>
+		                    		<input type="radio" name="" id="male">
+		                    		<label for="male">Private: No any member can able to see your privacy details without your acceptance.</label>
+		                    	</span>
+		                	</div>
+		                	<div class="s_row submission">
+			                	<button class="btn clr_fill">Submit</button>
+			                </div>
 		                </div>
 					</div>
+					<div class="form_group">
+	                	<div class="formBlock_heading">
+	                		<span>Image Resizing</span>
+	                	</div>
+	                	<div class="form_details">
+		                	<div class="s_row">
+		                		<input type="file" name="" class="label_jump sel_images">
+		                		<label class="label-valid">Select Your Image</label>
+		                	</div>
+	                		<div class="crop_image">
+	                			<div class="demo"></div>
+	                		</div>
+		                	<div class="cropimage_preview">
+		                		<ul>
+		                			<li><i class="close">x</i></li>
+		                			<li><i class="close">x</i></li>
+		                			<li><i class="close">x</i></li>
+		                			<li><i class="close">x</i></li>
+		                			<li><i class="close">x</i></li>
+		                			<li><i class="close">x</i></li>
+		                			<li><i class="close">x</i></li>
+		                			<li><i class="close">x</i></li>
+		                		</ul>
+		                	</div>
+		                	<div class="s_row f_width upload_image">
+		                		<button class="btn clr_fill cropped_image">Upload</button>
+		                	</div>
+		                	<div class="s_row f_width">
+		                		<span>
+		                    		<input type="radio" name="" id="male">
+		                    		<label for="male"> Public: Every member can able to see your privacy details.</label>
+		                    	</span>
+		                    	<span>
+		                    		<input type="radio" name="" id="male">
+		                    		<label for="male">Private: No any member can able to see your privacy details without your acceptance.</label>
+		                    	</span>
+		                	</div>
+	                	</div>	
+	                </div>
+	                <div class="s_row submission">
+	                	<button class="btn clr_fill">Submit</button>
+	                </div>
 				</form>
 			</div>
 		</div>
