@@ -6,6 +6,7 @@ if ($_POST) { // data for submission
     // prepare and bind
     $bannerFile = $_FILES['banner_file'];
     $status = $_POST['status'];
+    $bannerText = $_POST['banner_text'];
 
     if(empty($_POST['data_update'])){
         // insert section
@@ -17,17 +18,17 @@ if ($_POST) { // data for submission
         $uploadFile = $uploadDir.$fileName;
         move_uploaded_file($_FILES['banner_file']["tmp_name"], $uploadFile);
 
-        $sql = 'INSERT INTO imagebanner (banner_image, `status`) VALUES ( ?, ?)';
+        $sql = 'INSERT INTO imagebanner (banner_image, banner_text, `status`) VALUES ( ?, ?, ?)';
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("si", $fileName, $status);
+        $stmt->bind_param("ssi", $fileName, $bannerText, $status);
     } else {
 
         //update section
         if(!empty($_POST['image_exist']) && empty($_FILES['banner_file']["tmp_name"])){
             
-            $sql = 'UPDATE imagebanner set `status` = ? WHERE id = ?';
+            $sql = 'UPDATE imagebanner set `status` = ?, banner_text = ? WHERE id = ?';
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ii", $status, $_POST['data_update']);
+            $stmt->bind_param("isi", $status, $bannerText, $_POST['data_update']);
 
         } else if(!empty($_POST['image_exist']) && !empty($_FILES['banner_file']["tmp_name"])){
 
@@ -39,9 +40,9 @@ if ($_POST) { // data for submission
             $uploadFile = $uploadDir.$fileName;
             move_uploaded_file($_FILES['banner_file']["tmp_name"], $uploadFile);
 
-            $sql = 'UPDATE imagebanner set `status` = ?, banner_image = ? WHERE id = ?';
+            $sql = 'UPDATE imagebanner set `status` = ?, banner_text = ?, banner_image = ? WHERE id = ?';
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("isi", $status, $fileName, $_POST['data_update']);
+            $stmt->bind_param("issi", $status, $bannerText, $fileName, $_POST['data_update']);
         }   
     }
     $stmt->execute();
@@ -50,7 +51,7 @@ if ($_POST) { // data for submission
 if (!empty($_GET['id'])) {
     $dataId = $_GET['id'];
 
-    $stmt = $conn->prepare("SELECT id, banner_image, `status` FROM imagebanner WHERE  id = ?");
+    $stmt = $conn->prepare("SELECT id, banner_image, banner_text, `status` FROM imagebanner WHERE  id = ?");
     $stmt->bind_param("i", $dataId);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -73,6 +74,12 @@ if (!empty($_GET['id'])) {
                                 <div class="col col-md-3"><label class=" form-control-label">Static</label></div>
                                 <div class="col-12 col-md-9">
                                     <p class="form-control-static">Image Banner Data</p>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Text Input</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="text-input" name="banner_text" placeholder="Text" class="form-control" value="<?php echo (!empty($banner_data['id']) ? $banner_data['banner_text'] : '') ?>">
                                 </div>
                             </div>
                             <?php if(!empty($banner_data['banner_image'])) {?>
