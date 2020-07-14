@@ -7,10 +7,11 @@
     //$less->checkedCompile("less_assets/desktop/slick.less", "css/desktop_css/slick.css");
 ?>
 
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Rishtey Indian - Home page--</title>
+	<title>Rishtey Indian -Home page--</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/home.css">
 	<link rel="stylesheet" type="text/css" href="css/media.css">
